@@ -10,39 +10,52 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static("public"));
 
+let posts = []
 
-
-app.get("/",(req,res)=>{
-res.render("home", {StartingContent:homeStartingContent });
+app.get("/", (req, res) => {
+  res.render("home", {
+    StartingContent: homeStartingContent,
+    posts:posts
+  });
 
 });
 
-app.get("/about",(req,res)=>{
-  res.render("about",{about:aboutContent});
+app.get("/about", (req, res) => {
+  res.render("about", {
+    about: aboutContent
+  });
 });
 
-app.get("/contact",(req,res)=>{
-  res.render("contact", {contact:contactContent});
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    contact: contactContent
+  });
+});
+
+app.get("/compose", (req, res) => {
+  res.render("compose")
+});
+
+app.post("/compose", (req, res) => {
+  const post = {
+    Title: req.body.blogTitle,
+    Input: req.body.blogInput
+  };
+  posts.push(post)
+
+  res.redirect("/");
+
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(4000, ()=> {
+  console.log("Server started on port 4000");
 });

@@ -1,7 +1,18 @@
 <%- include("partials/header"); -%>
 <h1>Home</h1>
- <p>
+<p>
     <%= StartingContent %>
-</p> 
+</p>
+
+
+    
+<!--<% for(let i=0; i<posts.length; i++){ %>
+    <% console.log(posts[i].Title); %>
+<% } %>       This is a for loop to do the same thing as forEach. forEach is easier to write-->
+
+<% posts.forEach(post => console.log(post.Title)); %>
+    
+
+
 
 <%- include("partials/footer"); -%>
