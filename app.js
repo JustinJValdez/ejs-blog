@@ -44,6 +44,8 @@ app.get("/compose", (req, res) => {
   res.render("compose")
 });
 
+
+
 app.post("/compose", (req, res) => {
   const post = {
     Title: req.body.blogTitle,
@@ -56,6 +58,18 @@ app.post("/compose", (req, res) => {
 });
 
 
-app.listen(4000, ()=> {
+app.get("/posts/:challenge", (req,res)=>{
+const requestedTitle = req.params.challenge;
+
+  posts.forEach((post)=>{
+    const storedTitle = post.Title;
+
+    if (storedTitle === requestedTitle) {
+      console.log("Match Found!");
+    } 
+  });
+ });
+
+app.listen(3000, ()=> {
   console.log("Server started on port 4000");
 });

@@ -5,12 +5,20 @@
 </p>
 
 
+    <% posts.forEach((post) => { %>
+        <h1> <%= post.Title %> </h1> 
+        <p> <%= post.Input %> </p> 
+    
+    
+    <% }); %>
+
+
     
 <!--<% for(let i=0; i<posts.length; i++){ %>
     <% console.log(posts[i].Title); %>
 <% } %>       This is a for loop to do the same thing as forEach. forEach is easier to write-->
 
-<% posts.forEach(post => console.log(post.Title)); %>
+
     
 
 
